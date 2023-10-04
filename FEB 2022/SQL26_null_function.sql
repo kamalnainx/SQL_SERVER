@@ -1,0 +1,17 @@
+use feb2022;
+--null functions
+--ifnull()		mysql 
+--isnull()		sqlserver
+--coalesce()	mysql
+--NVL()			oracle
+
+
+select * from table11;
+
+select id, (salary+pincode) from table11 ;
+select id, (pincode+ ISNULL(salary, 0)) from table11 ;
+
+select id, (pincode+ ISNULL(salary, 0)) as total from table11 ;
+
+
+

@@ -1,0 +1,66 @@
+use feb2022;
+
+--null
+
+create table table1_null(id int null, fname varchar(255) null);
+
+select * from table1_null;
+
+insert into table1_null(id, fname) values(1,'kamal nain');
+insert into table1_null(id) values(1);
+
+
+
+--not null
+create table table_notNull(id int not null, uname varchar(50) not null, height float );
+
+select * from table_notNull;
+
+insert into table_notNull(id, height) values(1,6.1 );
+insert into table_notNull(id,uname, height) values(1,'kamal nain',6.1 );
+insert into table_notNull(id,uname) values(2,'kamalnainx' );
+
+
+create table table_notNull_1(id int not null, uname varchar(50) not null, height float );
+
+alter table table_notNull_1 add age int not null;
+select * from table_notNull_1;
+
+alter table table_notNull_1 drop column age ;
+
+
+
+
+
+
+
+
+--unique key
+--sqlserver
+create table table_unique (id int not null unique, uname varchar(50) unique, height float);
+
+--mysql
+create table table_unique_mysql (id int not null , uname varchar(50) unique, height float, unique(id));
+
+
+insert into table_unique(id, height)values(1, 6.1);
+
+select * from table_unique;
+
+insert into table_unique(id,uname, height)values(2,'abhi', 5.1);
+
+
+
+create table table_unique_multi_cols (id int not null , fname varchar(50), mname varchar(50), lname varchar(50)  , height float, constraint con_tumc unique(fname, mname, lname));
+insert into table_unique_multi_cols(id, height)values(1, 6.1);
+
+select * from table_unique_multi_cols;
+
+insert into table_unique_multi_cols(id,fname,mname, lname, height)values(2,'abhi','nav','kumar', 5.1);
+
+
+--sqlserver
+alter table table_unique_multi_cols drop constraint con_tumc;
+
+--mysql
+alter table table_unique_multi_cols drop index con_tumc;
